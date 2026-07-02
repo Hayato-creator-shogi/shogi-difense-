@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>盤上の防衛戦 - 将棋 vs チェス</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="menu-container">
+        <div class="title-logo">盤上の防衛戦 - 将棋 vs チェス</div>
+        <div id="select-screen">
+            <div class="panel stage-section">
+                <div class="section-title">本編ステージ</div>
+                <div class="stage-list-wrapper main-stages" id="stage-list"></div>
+                
+                <div class="section-title" style="color: #6a1b9a;">イベントステージ (超経験値!)</div>
+                <div class="stage-list-wrapper event-stages" id="event-stage-list"></div>
+            </div>
+            <div class="panel upgrade-section">
+                <div id="xp-display">所持XP: 0</div>
+                <div class="section-title">拠点強化</div>
+                <div class="upgrade-list" id="base-upgrade-list" style="max-height: none; margin-bottom: 15px;"></div>
+                <div class="section-title">駒の解放・強化（Lv10で成駒へ大幅進化！）</div>
+                <div class="upgrade-list" id="upgrade-list"></div>
+                
+                <button class="upgrade-btn book-btn" onclick="openEncyclopedia()">📖 敵キャラ図鑑（チェス軍団）を見る</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="encyclopedia-overlay">
+        <div class="encyclopedia-panel">
+            <h2 style="color: #4e342e; text-align: center; margin-top:0; border-bottom: 2px solid #ccc; padding-bottom: 10px;">敵キャラ図鑑（チェス軍団）</h2>
+            <div style="text-align: center; font-size: 14px; color: #666; margin-bottom: 10px;">倒したことのある敵のみ詳細が表示されます。</div>
+            <div class="encyclopedia-grid" id="encyclopedia-grid"></div>
+            <div style="text-align: center;">
+                <button class="close-btn" onclick="closeEncyclopedia()">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="epilogue-overlay">
+        <div class="epilogue-scroll" id="epilogue-text">
+            「 将棋 vs チェス 」<br><br>
+            かつて盤上を二分し、激しく争い合った二つの勢力。<br>
+            長きにわたる苛烈な防衛戦は、ついに決着の時を迎えた。<br><br>
+            あなたは優れた指揮官として将棋の駒たちを導き、<br>
+            圧倒的な力を持つ白黒の王「チェスマスター」を打ち破ったのだ。<br><br>
+            森には再び静寂が訪れ、<br>
+            傷ついた駒たちも静かに元の盤上へと帰っていく。<br><br>
+            彼らの勇姿とあなたの戦術は、この盤が存在する限り、<br>
+            永遠の伝説として語り継がれるだろう——。<br><br><br>
+            ＜ 本編クリア おめでとうございます！ ＞
+        </div>
+        <button class="epilogue-skip" onclick="skipEpilogue()">スキップ ＞</button>
+    </div>
+
+    <div id="battle-screen">
+        <div id="stage-banner">
+            <button id="back-btn" onclick="returnToMenu()">◀ 撤退する</button>
+            <span id="stage-name-display">ステージ 1</span>
+        </div>
+        
+        <div id="battle-area">
+            <div id="funds-overlay">資金: <span id="funds-p2">0</span> / <span id="max-funds-p2">1000</span></div>
+            
+            <div id="stage-result-overlay" onclick="returnToMenu()">
+                <div class="result-title" id="result-title">ステージクリア！</div>
+                <div class="result-xp" id="result-xp">経験値 +1500 XP</div>
+                <div class="result-unlock" id="result-unlock">✨ 新しい駒が解放可能になりました ✨</div>
+                <div class="result-tap">画面をタップして選択画面へ戻る</div>
+            </div>
+
+            <div id="game-viewport">
+                <div id="game-stage">
+                    <div id="base-p1" class="base">
+                        <div class="tower-hp hp-p1-text"><span id="hp-p1">1000</span></div>
+                        黒陣(敵)
+                    </div>
+                    <div id="base-p2" class="base">
+                        <div class="tower-hp hp-p2-text"><span id="hp-p2">2000</span></div>
+                        自陣
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="controls-wrapper">
+            <div id="wallet-btn-container">
+                <button id="wallet-btn">お財布LvUP</button>
+            </div>
+            <div id="button-container"></div>
+        </div>
+    </div>
+
+    <audio id="bgm-player" loop></audio>
+
+    <script src="main.js"></script>
+</body>
+</html>
